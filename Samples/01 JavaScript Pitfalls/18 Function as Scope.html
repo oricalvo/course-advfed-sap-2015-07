@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Function as Scope</title>
+    </head>
+
+    <body>
+        <script>
+            var num = 10;
+
+            function G() {
+                var num = 11;
+
+                console.log(num);
+            }
+
+            console.log(num);
+
+            G();
+        </script>
+    </body>
+</html>

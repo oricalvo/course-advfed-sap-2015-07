@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <button class="write">Write</button>
+    <button class="read">Read</button>
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+            var count = 1;
+
+            $(".write").click(function () {
+                var data = count++;
+sessionStorage.setItem("data", data);
+                console.log("Written: " + data);
+            });
+
+            $(".read").click(function () {
+var data = sessionStorage.getItem("data");
+                console.log("Read: " + data);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Value vs. Reference Types</title>
+    </head>
+
+    <body>
+        <script>
+            function F(num) {
+                num = 20;
+            }
+
+            function G(arr) {
+                arr[0] = 20;
+            }
+
+            function H(obj) {
+                obj.id = 20;
+            }
+
+            var num = 10;
+            console.log("Before: num = " + num);
+            F(num);
+            console.log("After: num = " + num);
+
+            var arr = [1, 2, 3];
+            console.log("Before: arr[0] = " + arr[0]);
+            G(arr);
+            console.log("After: arr[0] = " + arr[0]);
+
+            var obj = { id: 10 };
+            console.log("Before: obj.id = " + obj.id);
+            H(obj);
+            console.log("After: obj.id = " + obj.id);
+        </script>
+    </body>
+</html>

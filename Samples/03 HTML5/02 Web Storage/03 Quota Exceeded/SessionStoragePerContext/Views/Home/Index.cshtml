@@ -1,0 +1,55 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <button class="write">Save Big Data</button>
+    <button class="read">Read</button>
+
+    <input />
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+            var count = 1;
+
+            var SIZE = 5 * 1024 * 1024;
+
+            var data = new Array(SIZE);
+            for (var i = 0; i < SIZE; i++) {
+                data[i] = i;
+            }
+
+            $(".write").click(function () {
+                try {
+                    var str = JSON.stringify(data);
+                    console.log("str: " + str.length);
+
+                    localStorage.setItem("data", str);
+
+                    console.log("Written: " + data.length);
+                }
+                catch (err) {
+                    console.log("ERROR");
+                    console.log(err);
+                }
+            });
+
+            $(".read").click(function () {
+                var str = localStorage.getItem("data");
+                var data = JSON.parse(str);
+
+                console.log("Read: " + data.length);
+            });
+        });
+    </script>
+</body>
+</html>

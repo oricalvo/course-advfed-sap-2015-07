@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Logical OR operator</title>
+    </head>
+
+    <body>
+        <script>
+            function F() {
+                console.log("    F");
+
+                return true;
+            }
+
+            function G() {
+                console.log("    G");
+
+                return false;
+            }
+
+            console.log("true || false");
+            console.log("    " + (true || false));
+
+            console.log(" ");
+            console.log("F() || G()");
+            console.log("    " + F() || G());
+
+            console.log(" ");
+            console.log("var obj = obj || {}");
+            var obj = obj || {};
+            console.log("    " + obj);
+        </script>
+    </body>
+</html>

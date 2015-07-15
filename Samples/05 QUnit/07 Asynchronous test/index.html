@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+
+    <script>
+function runTask(success, error) {
+    setTimeout(function () {
+        success(42);
+    }, 1500);
+}
+
+QUnit.test("Verify runTask returns the meaning of life", function (assert) {
+    var done = assert.async();
+
+    runTask(function (res) {
+        assert.equal(res, 43);
+
+        done();
+    });
+});
+
+    </script>
+</body>
+</html>

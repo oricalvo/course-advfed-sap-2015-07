@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Self Executing</title>
+    </head>
+
+    <body>
+        <script>
+            (function () {
+                console.log("Self executed #1");
+            })();
+
+            (function () {
+                console.log("Self executed #2");
+            })();
+
+            var g = function () {
+                console.log("Not executed");
+            };
+
+        </script>
+    </body>
+</html>

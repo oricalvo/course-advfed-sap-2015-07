@@ -1,0 +1,10 @@
+@import url("Second.css");
+
+#header {
+    font-size: 2em;
+}
+
+#footer {
+    border-top: 1px solid black;
+    font-size: 0.85em;
+}

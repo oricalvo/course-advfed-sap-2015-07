@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Function as Constructor</title>
+    </head>
+
+    <body>
+        <script>
+            function Contact(id, name) {
+                this.id = id;
+                this.name = name;
+            }
+
+            Contact.prototype.dump = function () {
+                console.log(this.id + ", " + this.name);
+            }
+
+            var c1 = new Contact(1, "Ori");
+            c1.dump();
+
+            var c2 = new Contact(2, "Roni");
+            c2.dump();
+
+            console.log("(c1.dump == c2.dump): " + (c1.dump == c2.dump));
+        </script>
+    </body>
+</html>

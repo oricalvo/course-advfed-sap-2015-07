@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Prototype Chaining</title>
+    </head>
+
+    <body>
+        <script>
+            function inherit(derived, base) {
+                function F() {
+                }
+
+                F.prototype = base.prototype;
+
+                derived.prototype = new F();
+            }
+
+            function Shape(x, y) {
+                console.log("Shape.ctor");
+
+                this.x = x;
+                this.y = y;
+            }
+
+            Shape.prototype.move = function (dx, dy) {
+                this.x += dx;
+                this.y += dy;
+            }
+
+            Shape.prototype.dump = function () {
+                console.log(this.x + ", " + this.y);
+            }
+
+            function Circle(x, y, radius) {
+                console.log("Circle.move");
+
+                Shape.call(this, x, y);
+
+                this.radius = radius;
+            }
+
+            inherit(Circle, Shape);
+
+            Circle.prototype.dump = function () {
+                console.log(this.x + ", " + this.y + ", " + this.radius);
+            }
+
+            var c = new Circle(5, 5, 10);
+            c.move(2, 2);
+
+            c.dump();
+        </script>
+    </body>
+</html>

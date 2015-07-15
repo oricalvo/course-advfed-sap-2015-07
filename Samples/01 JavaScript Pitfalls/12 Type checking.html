@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Type checking</title>
+    </head>
+
+    <body>
+        <input type="text" value="10" id="name10" />
+        <input type="text" value="" id="nameEmpty" />
+
+        <script>
+            console.log("1 + 2 = " + (1 + 2));
+            console.log("'ABC' + 2 = " + ("ABC" + 2));
+            console.log("'ABC' * 2 = " + ("ABC" * 2));
+            console.log("'ABC' > 2 = " + ("ABC" > 2));
+            console.log("'ABC' < 2 = " + ("ABC" < 2));
+            console.log("getElementById(10) + 2: " + (document.getElementById("name10").value + 2));
+            console.log("getElementById('') == 0: " + (document.getElementById("nameEmpty").value == 0));
+        </script>
+    </body>
+</html>

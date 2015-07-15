@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Class Infrastructure</title>
+    </head>
+
+    <body>
+        <script>
+            function Contact(id, name) {
+                var me = {
+                    id: id,
+                    name: name,
+                };
+
+                return {
+                    dump: Contact.dump.bind(me)
+                };
+            }
+
+            Contact.dump = function () {
+                console.log(this.id + ", " + this.name);
+            }
+
+            var Contact = new Class({
+                ctor: function (id, name) {
+                    this.id = id;
+                    this.name = name;
+                },
+
+                dump: function () {
+                    console.log(this.id + ", " + this.name);
+                }
+            });
+
+            function Class(methods) {
+                function Ctor() {
+                    var fields = {
+                    };
+
+                    methods.ctor.apply(me, arguments);
+
+                    var 
+
+                    for (var methodName in methods) {
+                        if (methodName == "ctor") {
+                            continue;
+                        }
+                    }
+                }
+
+                return Ctor;
+            }
+
+            var c1 = new Contact(1, "Ori");
+            c1.dump();
+
+            var c2 = new Contact(2, "Roni");
+            c2.dump();
+
+            console.log("c1.id: " + c1.id);
+            console.log("(c1.dump == c2.dump): " + (c1.dump == c2.dump));
+        </script>
+    </body>
+</html>

@@ -1,0 +1,138 @@
+﻿<html>
+<head>
+    <title>Canvas</title>
+
+    <style>
+    </style>
+
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <h2>Index</h2>
+
+    <canvas id="myCanvas" width="400" height="200" style="border: 1px solid #000000;">
+    </canvas>
+
+    <div style="margin-top: 1em;">
+        <button class="rect">Rect</button>
+        <button class="ellipse">Ellipse</button>
+        <button class="moveX">Move X</button>
+        <button class="moveY">Move Y</button>
+        <button class="clear">Clear</button>
+        <button class="save">Save</button>
+    </div>
+
+    <script type="text/javascript">
+        var from = null;
+        var to = null;
+        var position = { x: 200, y: 100 };
+        var type = null;
+
+        var canvas = document.getElementById("myCanvas");
+        $(canvas).bind("selectstart", function () {
+            //
+            //  prevent cursor from changing to Beam style
+            //
+            return false;
+        });
+
+        var ctx = canvas.getContext("2d");
+
+        //draw();
+
+        $(".rect").click(function () {
+            type = "rect";
+
+            draw();
+        });
+
+        $(".ellipse").click(function () {
+            type = "ellipse";
+
+            draw();
+        });
+
+        $(".moveX").click(function () {
+            position.x += 5;
+
+            draw();
+        });
+
+        $(".moveY").click(function () {
+            position.y += 5;
+
+            draw();
+        });
+
+        $(".clear").click(function () {
+            clear();
+        });
+
+        $(".save").click(function () {
+            save();
+        });
+
+        $("canvas").bind("mousedown", function (e) {
+            console.log("down: " + e.offsetX + ", " + e.offsetY);
+
+            from = {
+                x: e.offsetX,
+                y: e.offsetY
+            };
+        });
+
+        $("canvas").bind("mouseup", function (e) {
+            console.log("up: " + e.offsetX + ", " + e.offsetY);
+
+            from = null;
+            to = null;
+        });
+
+        $("canvas").bind("mousemove", function (e) {
+            if (!from) {
+                return;
+            }
+
+            console.log("move: " + e.offsetX + ", " + e.offsetY);
+
+            to = {
+                x: e.offsetX,
+                y: e.offsetY
+            };
+
+            ctx.beginPath();
+            ctx.moveTo(from.x, from.y);
+            ctx.lineTo(to.x, to.y);
+            ctx.stroke();
+
+            from = to;
+        });
+
+        function draw() {
+            clear();
+
+            ctx.fillStyle = "#FF0000";
+
+            if (type == "rect") {
+                ctx.fillRect(position.x - 25, position.y - 25, 50, 50);
+            }
+            else if (type == "ellipse") {
+                ctx.beginPath();
+                ctx.arc(position.x, position.y, 25, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        }
+
+        function clear() {
+            ctx.clearRect(0, 0, 400, 200);
+        }
+
+        function save() {
+            ctx.getd
+        }
+    </script>
+</body>
+</html>
+
+

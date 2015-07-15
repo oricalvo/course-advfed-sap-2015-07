@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style>
+        .item {
+            border-bottom: 1px solid black;
+        }
+
+            .item:first-of-type {
+                border-top: 1px solid black;
+            }
+
+        .list::after {
+            content: 'blabla';
+            background-color: blue;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="list">
+        <div class="item">
+            Item 1
+        </div>
+
+        <div class="item">
+            Item 2
+        </div>
+
+        <div class="item">
+            Item 3
+        </div>
+    </div>
+</body>
+</html>

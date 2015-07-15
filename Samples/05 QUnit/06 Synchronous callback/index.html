@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+
+    <script>
+        function calc(num1, num2, completed) {
+            var res = num1 + num2;
+
+            res && completed(res);
+        }
+
+QUnit.test("Verify calc returns the correct value", function (assert) {
+    assert.expect(2);
+
+    calc(2, 3, function (res) {
+        assert.equal(res, 5);
+    });
+
+    calc(-2, 2, function (res) {
+        assert.equal(res, 0);
+    });
+});
+
+    </script>
+</body>
+</html>

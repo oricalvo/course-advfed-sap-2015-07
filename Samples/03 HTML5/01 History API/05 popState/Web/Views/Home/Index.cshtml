@@ -1,0 +1,36 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <script src="~/Scripts/jquery.js"></script>
+</head>
+<body>
+    <div> 
+        <button>Push State</button>
+    </div>
+
+    <script>
+$(window).bind("popstate", function (e) {
+    console.log("popstate: " + e.originalEvent.state);
+console.log("Current state is: " + history.state);
+});
+
+$(function () {
+
+    var counter = 1;
+            $("button").click(function () {
+                history.pushState({}, null, "state" + counter);
+                ++counter;
+            });
+        });
+    </script>
+</body>
+</html>

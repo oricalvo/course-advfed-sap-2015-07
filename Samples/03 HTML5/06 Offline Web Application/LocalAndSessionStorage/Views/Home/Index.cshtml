@@ -1,0 +1,32 @@
+﻿<html manifest="~/site.appcache">
+    <head>
+        <script src="~/Scripts/jquery.js?_=ver1"></script>
+        <script src="~/Scripts/knockout.js?_=ver1"></script>
+        <script src="~/Scripts/Contact.js?_=ver1"></script>
+        <script src="~/Scripts/IndexView.js?_=ver1"></script>
+    </head>
+
+    <body>
+        <h2>Version 8.0</h2>
+
+        <div>
+            <a href="/Home/NonOffline">Goto Non Offline Page</a>
+        </div>
+
+        <div class="contacts-view">
+            <ul data-bind="foreach: contacts" class="contacts">
+                <li>
+                    <span class="name" data-bind="text: name">
+                    </span>
+                </li>
+            </ul>
+
+            <div>
+                <input type="text" data-bind="value: name" />
+                <input type="button" value="Add" data-bind="click: add" />
+                <input type="button" value="Check Update" data-bind="click: checkUpdate" />
+            </div>
+        </div>
+    </body>
+</html>
+

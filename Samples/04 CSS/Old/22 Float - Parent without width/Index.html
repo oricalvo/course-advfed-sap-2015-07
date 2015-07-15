@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        html {
+            font-size: 2em;
+            margin: 5em;
+        }
+
+        .super {
+            display: inline-block;
+            width: 0;
+            white-space: nowrap;
+        }
+
+        .parent {
+            display: inline-block;
+            border: 1px solid black;
+            padding: 1em;
+        }
+
+        .floated {
+            background-color: blue;
+            padding: 1em;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="super">
+
+        <div class="parent">
+            <span class="floated">Floated</span>
+            Text text text text text text text
+        </div>
+
+    </div>
+
+    <span>ddd</span>
+</body>
+</html>

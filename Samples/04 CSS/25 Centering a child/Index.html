@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        html {
+            font-size: 2em;
+        }
+
+        body {
+            margin: 1rem;
+        }
+
+        .parent {
+            width: 10em;
+            height: 10em;
+            display: inline-block;
+            background-color: red;
+        }
+
+            /*.parent:after {
+                content: "";
+                width: 0;
+                width: 2px;
+                background-color: yellow;
+                height: 100%;
+                display: inline-block;
+                vertical-align: middle;
+            }*/
+
+        .child {
+            width: 5em;
+            display: inline-block;
+            background-color: blue;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">child child child child child child child child child child child</div>
+    </div>
+</body>
+</html>

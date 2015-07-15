@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>Unitialized vs Undeclared Variable</title>
+</head>
+
+<body>
+    <script>
+        var uninitialized;
+
+        console.log("typeof(uninitialized) = " + typeof(uninitialized));
+        console.log("typeof(undeclared) = " + typeof(undeclared));
+
+        console.log(" ");
+        console.log("window.hasOwnProperty('uninitialized') = " + window.hasOwnProperty("uninitialized"));
+        console.log("window.hasOwnProperty('undeclared') = " + window.hasOwnProperty("undeclared"));
+
+        console.log(" ");
+        console.log("uninitialized = " + uninitialized);
+        console.log("undeclared = " + undeclared);
+    </script>
+</body>
+
+</html>

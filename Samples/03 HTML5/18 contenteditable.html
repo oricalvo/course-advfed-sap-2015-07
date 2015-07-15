@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<head>
+    <title>DataList</title>
+
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div>
+        <div class="pane">
+            This content can be edited
+        </div>
+
+        <button class="edit">Edit</button>
+        <button class="save">Save</button>
+    </div>
+
+    <script>
+        $(function () {
+            var div = $(".pane");
+
+            $(".edit").click(function () {
+                div.attr("contenteditable", "true");
+                div.focus();
+            });
+
+            $(".save").click(function () {
+                div.removeAttr("contenteditable");
+            });
+        });
+    </script>
+</body>
+</html>

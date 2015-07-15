@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Drag and Drop</title>
+        <script src="jquery.js"></script>
+
+        <style>
+            .draggable
+            {
+                width: 10em;
+                height: 10em;
+                background-color: blue;
+                float: left;
+                margin-right: 5em;
+            }
+
+            .dragzone
+            {
+                width: 320px;
+                height: 320px;
+                background-color: red;
+                float: left;
+            }
+
+                .dragzone.dragover
+                {
+                    border: 5px solid gray;
+                }
+
+            ul
+            {
+                list-style-type: none;
+                margin: 0;
+                padding:0;
+            }
+
+            .message
+            {
+                font-size: 2em;
+            }
+        </style>
+    </head>
+<body>
+
+    <div class="draggable" draggable="true">
+        <input type="text" value="Hello D&D" />
+    </div>
+
+    <div class="dragzone">
+        <span class="message"></span>
+        <ul class="files"></ul>
+    </div>
+
+    <script>
+        //
+        //  BY default jQuery 1.9.1's event object does not contain a dataTransfer object
+        //  Below line instruct jQuery to copy the dataTransfer property from the original event (A.K.A originalEvent)
+        //  to jquery event wrapper
+        //
+        jQuery.event.props.push('dataTransfer');
+
+        $(function () {
+            var draggable = $(".draggable");
+            var ulFiles = $(".files");
+            var message = $(".message");
+
+            draggable.bind("dragstart", function (e) {
+                //
+                //  IE only support Text and URL format
+                //
+                var dataFormat = "Text";
+                var data = draggable.find("input").val();
+
+                e.dataTransfer.setData("Text", data);
+
+                //
+                //  Calling preventDefault means no drag of this element is allowed
+                //
+                //e.preventDefault();
+            });
+
+            var dragzone = $(".dragzone");
+            dragzone.bind("dragover", function (e) {
+                e.preventDefault();
+            });
+
+            dragzone.bind("dragenter", function (e) {
+                dragzone.addClass("dragover");
+
+                e.preventDefault();
+            });
+
+            dragzone.bind("dragleave dragend drop", function (e) {
+                dragzone.removeClass("dragover");
+            });
+
+            dragzone.bind("drop", function (e) {
+                ulFiles.empty();
+                message.empty();
+
+                if (e.dataTransfer.files.length > 0) {
+                    var files = e.dataTransfer.files;
+                    for (var i = 0; i < files.length; i++) {
+                        var file = files[i];
+
+                        $("<li/>").text(file.name).appendTo(ulFiles);
+
+                        dragzone.find(".message").text("Files");
+                    }
+                }
+                else {
+                    //
+                    //  Update target with data sent from source
+                    //
+                    message.text(e.dataTransfer.getData("Text"));
+                }
+
+                return false;
+            });
+        });
+    </script>
+</body>
+</html>

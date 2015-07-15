@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Pseudo Elements</title>
+
+    <!--
+        This sample demonstrate how you can add image to a LI using CSS without HTML modification
+    -->
+    <style>
+        html {
+            font-size: 4em;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            border-bottom: 1px solid rgb(165, 165, 165);
+        }
+
+            li span {
+                vertical-align: middle;
+            }
+
+            li:before {
+                top: 5px;
+            }
+
+            li.css:before {
+                content: url(CSS3.ico);
+            }
+
+            li.html:before {
+                content: url(HTML.ico);
+            }
+    </style>
+</head>
+
+<body>
+<ul>
+    <li class="css">
+        <span>Ori</span>
+    </li>
+    <li class="html">
+        <span>Roni</span>
+    </li>
+</ul>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>String</title>
+    </head>
+
+    <body>
+        <script>
+            function replaceAt(str, index, ch) {
+                return str.substr(0, index) + ch + str.substr(index + ch.length);
+            }
+
+            var str = "ABC";
+            console.log("str = " + str);
+            console.log(" ");
+
+            console.log("str1[0] = 'X'");
+            console.log("str = " + str);
+            console.log(" ");
+
+            console.log("str = replaceAt(str, 0, 'X')");
+            str = replaceAt(str, 0, "X");
+            console.log("str = " + str);
+        </script>
+    </body>
+</html>

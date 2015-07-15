@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Object as Map</title>
+    </head>
+
+    <body>
+        <script>
+            function createMap() {
+                return {};
+            }
+
+            function containsKey(map, key) {
+                var res = map.hasOwnProperty(key);
+                return res;
+            }
+
+            function getValue(map, key) {
+                if (!containsKey(map, key)) {
+                    return key + " does not exist";
+                }
+
+                return map[key];
+            }
+
+            function add(map, key, value) {
+                if (containsKey(map, key)) {
+                    console.log(key + " already present");
+                    return;
+                }
+
+                map[key] = value;
+            }
+
+            function forEach(map, func) {
+                for (var key in map) {
+                    func(key, map[key]);
+                }
+            }
+
+            function set(key, value) {
+                map[key] = value;
+            }
+
+            function removeKey(map, key) {
+                delete map[key];
+            }
+
+            function count(map) {
+                var count = 0;
+
+                for (var key in map) {
+                    ++count;
+                }
+
+                return count;
+            }
+
+            var map = createMap();
+
+            console.log("Before");
+            console.log("    Count = " + count(map));
+
+            console.log('add(map, "id", 1234);');
+            console.log('add(map, "name", "Ori");');
+            add(map, "id", 1234);
+            add(map, "name", "Ori");
+            console.log("    Count = " + count(map));
+            console.log("    getValue('id') = " + getValue(map, "id"));
+
+            console.log('removeKey(map, "id");');
+            removeKey(map, "id");
+            console.log("    Count = " + count(map));
+            console.log("    getValue('id') = " + getValue(map, "id"));
+
+            console.log('forEach');
+            forEach(map, function (k, v) {
+                console.log("    " + k + ": " + v);
+            });
+        </script>
+    </body>
+</html>

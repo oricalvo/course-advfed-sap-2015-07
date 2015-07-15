@@ -1,0 +1,18 @@
+﻿CACHE MANIFEST
+
+CACHE:
+/
+/Home
+/Home/Index
+/Scripts/jquery.js?_=ver1
+/Scripts/knockout.js?_=ver1
+/Scripts/Contact.js?_=ver1
+/Scripts/IndexView.js?_=ver1
+
+FALLBACK:
+/ /Home/Offline
+
+NETWORK:
+*
+
+# revision ver8

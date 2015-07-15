@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>A Problem</title>
+
+        <link href="~/Content/Site.css" rel="stylesheet" />
+
+        <script type="text/javascript" src="~/scripts/jquery.js"></script>
+        <script type="text/javascript" src="~/scripts/underscore.js"></script>
+        <script type="text/javascript" src="~/scripts/backbone.js"></script>
+
+        <script type="text/javascript" src="~/scripts/View1.js"></script>
+        <script type="text/javascript" src="~/scripts/View2.js"></script>
+        <script type="text/javascript" src="~/scripts/Routers.js"></script>
+        <script type="text/javascript" src="~/scripts/App.js"></script>
+    </head>
+
+    <body>
+        <div class="view1 view" data-main-view="true">
+            <h1>This is View1</h1>
+            <a href="#" class="view2">Goto View2</a>
+            <a href="#" class="second">Goto Second</a>
+        </div>
+
+        <div class="view2 view">
+            <h1>This is View2</h1>
+            <a href="#">Goto View1</a>
+        </div>
+    </body>
+</html>

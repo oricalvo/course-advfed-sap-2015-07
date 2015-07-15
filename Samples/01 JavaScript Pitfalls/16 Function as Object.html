@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Function as Object</title>
+    </head>
+
+    <body>
+        <script>
+            function F(num1, num2) {
+                console.log("F.arguments");
+                for (var i = 0; i < F.arguments.length; i++) {
+                    console.log("    " + F.arguments[i]);
+                }
+
+                console.log("F.caller.name = " + F.caller.name);
+            }
+
+            function G() {
+                F(10, 11);
+            }
+
+            console.log("typeof(F) = " + typeof (F));
+            console.log("F.name = " + F.name);
+            console.log("F.length = " + F.length);
+            console.log("F.arguments = " + F.arguments);
+            console.log("F.caller = " + F.caller);
+
+            console.log(" ");
+            console.log("Calling F through G");
+            console.log("-------------------");
+            G();
+        </script>
+    </body>
+</html>

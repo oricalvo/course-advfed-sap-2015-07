@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style>
+        input[type=file] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <input id="inputFile" type="file" />
+
+    <button id="buttonBrowse">Browse</button>
+
+    <script>
+        var input = document.getElementById("inputFile");
+        input.addEventListener("change", function () {
+            console.log("Change:" + input.files.length);
+
+            if (input.files.length > 0) {
+                var file = input.files[0];
+
+                console.log(file);
+            }
+
+            input.value = "";
+        });
+
+        document.getElementById("buttonBrowse").addEventListener("click", function () {
+
+            console.log("before");
+
+            input.click();
+
+            console.log("after");
+
+        });
+    </script>
+</body>
+</html>

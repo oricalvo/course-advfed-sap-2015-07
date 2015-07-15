@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <style>
+        input[type=file] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select small file and watch progress</h1>
+
+    <input type="file" />
+
+    <div class="progress">0%</div>
+
+    <button class="browse">Browse</button>
+    <button class="abort">Abort</button>
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+            var count = 1;
+
+            var fileInput = $("input");
+            var progress = $(".progress");
+            var file = null;                // handle to file being read
+            var fileReader = null;          // current fileReader
+
+            fileInput.bind("change", fileSelectionChanged);
+            $(".browse").click(browse);
+            $(".abort").click(abort);
+
+            function browse() {
+                fileInput.trigger("click");
+            }
+
+            function abort() {
+                if (fileReader != null) {
+                    fileReader.abort();
+                }
+            }
+
+            function fileSelectionChanged(e) {
+                if (e.target.files.length == 0) {
+                    return;
+                }
+
+                console.log("File selection changed: " + e.target.files.length);
+
+                //
+                //  Only one file at a time
+                //
+                file = fileInput[0].files[0];
+
+                //
+                //  Reset variables from previous read operation
+                //  
+                fileReader = null;
+
+                readFile();
+            }
+
+            function readFile() {
+                //
+                //  Construct a file reader object and read the next slice
+                //
+                fileReader = new FileReader();
+                //fileReader.readAsText(file);
+                //fileReader.readAsDataURL(file);
+                fileReader.readAsArrayBuffer(file);
+
+                fileReader.addEventListener("progress", function (e) {
+                    //
+                    //  load is fired when read operation completed successfully
+                    //
+                    console.log("progress: " + e.target.result.length);
+                });
+
+                fileReader.addEventListener("load", function (e) {
+                    //
+                    //  load is fired when read operation completed successfully
+                    //
+                    var bufArr = e.target.result;
+                    var intArr = new Int32Array(bufArr);
+
+                    console.log("load: " + e.target.result);
+                    for (var i = 0; i < intArr.length; i++) {
+                        console.log("    intArr[" + i + "]: " + intArr[i]);
+                    }
+                });
+
+                fileReader.addEventListener("abort", function (e) {
+                    //
+                    //  load is fired when read operation completed successfully
+                    //
+                    console.log("aborted:");
+                });
+            }
+        });
+    </script>
+</body>
+</html>

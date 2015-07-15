@@ -1,0 +1,58 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <style>
+        input:invalid {
+            border: 1px solid red;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<form novalidate>
+    Name:
+    <input type="text" required class="name" />
+
+    <br />
+    E-Mail:
+    <input type="email" value="not valid email" />
+
+    <br />
+    <br />
+    <input type="submit" value="Submit" />
+</form>
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+$(".name").bind("invalid", function () {
+    this.setCustomValidity("ערך חובה");
+});
+
+$("form").bind("submit", function () {
+    console.log("submit");
+
+    if (!this.checkValidity()) {
+        var invalidInputs = $("input:invalid");
+        if (invalidInputs.length) {
+            alert(invalidInputs[0].validationMessage);
+        }
+
+        return false;
+    }
+
+    return true;
+});
+        });
+    </script>
+</body>
+</html>

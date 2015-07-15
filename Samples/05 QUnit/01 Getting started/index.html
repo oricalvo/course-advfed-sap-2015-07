@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <!--<div id="qunit"></div>-->
+    <div id="qunit-fixture"></div>
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+    <script>
+        QUnit.test("a basic test example", function (assert) {
+            var value = "hello";
+            assert.equal(value, "hello", "We expect value to be hello");
+        });
+    </script>
+
+    <script>
+function Assert(testContext) {
+    this.test = testContext;
+}
+
+// Assert helpers
+QUnit.assert = Assert.prototype = {
+
+    expect: function (asserts) {},
+    async: function () {},
+    push: function () {},
+    ok: function (result, message) {},
+    notOk: function (result, message) {},
+    equal: function (actual, expected, message) {},
+    notEqual: function (actual, expected, message) {},
+    propEqual: function (actual, expected, message) {},
+    notPropEqual: function (actual, expected, message) {},
+    deepEqual: function (actual, expected, message) {},
+    notDeepEqual: function (actual, expected, message) {},
+    strictEqual: function (actual, expected, message) {},
+    notStrictEqual: function (actual, expected, message) {},
+    "throws": function (block, expected, message) {}
+};
+
+    </script>
+</body>
+</html>

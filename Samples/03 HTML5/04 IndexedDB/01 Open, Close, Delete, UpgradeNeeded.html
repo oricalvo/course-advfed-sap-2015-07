@@ -1,0 +1,23 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Indexed DB</title>
+
+    <script src="jquery.js"></script>
+    <script src="DAL.js"></script>
+</head>
+<body>
+    <h1>Try to delete a database before closing it</h1>
+
+    <button class="openDb">Open DB</button>
+    <button class="closeDb">Close DB</button>
+    <button class="deleteDb">Delete DB</button>
+
+    <script>
+        $(function () {
+            $(".openDb").click(DAL.openDb);
+            $(".closeDb").click(DAL.closeDb);
+            $(".deleteDb").click(DAL.deleteDb);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+#header {
+    font-size: 2em;
+    color: red;
+}
+
+#footer {
+    border-top: 1px solid black;
+    font-size: 0.85em;
+}

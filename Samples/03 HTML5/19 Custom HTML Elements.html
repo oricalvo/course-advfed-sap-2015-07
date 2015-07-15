@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+
+<html lang="he">
+<head>
+    <title>DataList</title>
+
+    <script src="jquery.js"></script>
+
+    <style>
+        x-grid {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        $(function () {
+            var XGridProto = Object.create(HTMLElement.prototype);
+
+            XGridProto.createdCallback = function () {
+                console.log("Created");
+
+                this.addEventListener("click", function () {
+                    console.log("Clicked");
+                });
+
+                var button = $("<button />");
+                button.text("Click me");
+                this.appendChild(button.get(0));
+            }
+
+            var XGrid = document.registerElement("x-grid", {
+                prototype: XGridProto,
+            });
+
+            document.body.appendChild(new XGrid());
+        });
+    </script>
+</body>
+</html>

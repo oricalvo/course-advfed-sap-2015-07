@@ -1,0 +1,29 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyApp">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="HomeCtrl">
+        <button ng-click="run()">Run</button>
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module("MyApp", []).controller("HomeCtrl", function ($scope) {
+            $scope.run = function () {
+                var num = 10;
+
+                setTimeout(function () {
+                    //
+                    //  Enable/disable Async call stack and see the difference
+                    //
+                    debugger;
+
+                    console.log("onTimeout");
+                }, 1500);
+            }
+        });
+    </script>
+</body>
+</html>

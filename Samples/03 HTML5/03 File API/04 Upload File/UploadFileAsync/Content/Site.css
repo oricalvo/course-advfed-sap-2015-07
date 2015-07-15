@@ -1,0 +1,57 @@
+﻿body {
+}
+
+input, button {
+}
+
+input[type=file]{
+    width:0;
+    height:0;
+}
+
+
+ul.files li {
+    position: relative;
+    height: 3em;
+}
+
+ul.files li span{
+    margin-right: 1em;
+}
+
+ul.files li .upload-indicator {
+    position: absolute;
+    left:0;
+    top:0;
+    width:0%;
+    height:100%;
+    background-color: lightblue;
+    z-index:1;
+}
+
+    ul.files li.completed .upload-indicator {
+        background-color: green;
+    }
+
+    ul.files li.error .upload-indicator {
+        background-color: red;
+    }
+
+    ul.files li .details {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        line-height: 100%;
+        padding: 1em;
+    }
+
+    ul.files li.completed .details {
+        color: white;
+    }
+
+.btn-group {
+    padding-left: 1em;
+}

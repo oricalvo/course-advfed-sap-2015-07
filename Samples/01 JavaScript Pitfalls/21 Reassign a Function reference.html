@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Bind a function</title>
+    </head>
+
+    <body>
+        <script>
+            function F() {
+                console.log("Fixing F for " + navigator.userAgent);
+                if (navigator.userAgent.indexOf("Chrome") != -1) {
+                    F = F_Chrome;
+                }
+
+                F();
+            }
+
+            function F_Chrome() {
+                console.log("F for Chrome");
+            }
+
+            console.log("First time");
+            F();
+
+            console.log(" ");
+            console.log("Second time");
+            F();
+        </script>
+    </body>
+</html>

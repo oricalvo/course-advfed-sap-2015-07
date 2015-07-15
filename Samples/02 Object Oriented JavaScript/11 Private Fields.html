@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Private Fields</title>
+    </head>
+
+    <body>
+        <script>
+            function createContact(id, name) {
+                var _id = id;
+                var _name = name;
+
+                var contact = {
+                    dump: function () {
+                        console.log(_id + ", " + _name);
+                    }
+                };
+
+                return contact;
+            }
+
+            var contact = createContact(123, "Ori");
+            contact.dump();
+        </script>
+    </body>
+</html>

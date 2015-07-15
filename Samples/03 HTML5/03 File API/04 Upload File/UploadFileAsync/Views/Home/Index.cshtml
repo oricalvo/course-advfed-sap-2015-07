@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="App">
+<head>
+    <title></title>
+
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+</head>
+<body ng-controller="MainCtrl">
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">Async Files Upload</a>
+            </div>
+        </div>
+    </nav>
+
+    <input type="file" multiple name="file" />
+
+    <ul class="files ng-hide list-group" ng-show="true">
+        <li ng-repeat="file in files" ng-class="{completed: file.completed, error: file.error}" class="list-group-item">
+            <div class="upload-indicator" ng-style="getIndicatorStyle(file)"></div>
+            <div class="details">
+                <span class="name">{{file.name}}</span>
+                <span class="size">{{file.size}}</span>
+            </div>
+        </li>
+    </ul>
+
+    <div class="btn-group">
+        <button ng-click="selectFiles()">Select</button>
+        <button ng-click="upload()">Upload</button>
+        <button ng-click="clear()">Clear</button>
+    </div>
+
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/App.min.js"></script>
+    <script src="~/Scripts/MainCtrl.min.js"></script>
+    <script>
+        var applicationPath = "@Request.ApplicationPath";
+        if (applicationPath == "/") {
+            applicationPath = "";
+        }
+    </script>
+</body>
+</html>

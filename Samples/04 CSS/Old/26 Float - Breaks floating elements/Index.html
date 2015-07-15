@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        body {
+            font-size: 2em;
+            margin: 5em;
+            width: 20em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .floated {
+            background-color: gray;
+            float: left;
+            width: 5em;
+            height: 5em;
+            margin-right: 1em;
+            margin-bottom:1em;
+        }
+
+        .clear-float {
+            clear: both;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="view">
+        <div class="floated">
+            1
+        </div>
+
+        <div class="floated">
+            2
+        </div>
+
+        <div class="floated clear-float">
+            3
+        </div>
+
+        <span class="floated">XXX</span>
+    </div>
+</body>
+</html>

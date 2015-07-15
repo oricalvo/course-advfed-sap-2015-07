@@ -1,0 +1,32 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <style>
+        input:invalid {
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <form>
+<input type="text" pattern="(ab)*" />
+
+        <input type="submit" value="Submit" />
+    </form>
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        html {
+            font-size: 2em;
+            width: 20em;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 5em;
+        }
+
+        .parent {
+            width: 10em;
+            height: 10em;
+            background-color: blue;
+            position: relative;
+        }
+
+        .child {
+            height: 2em;
+            background-color: red;
+        }
+
+        .dock-bottom {
+            /*position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child dock-bottom">
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,12 @@
+button {
+    border: none;
+    padding: 1em;
+}
+
+* {
+    font-family: Tahoma;
+}
+
+#header {
+    font-size: 2em;
+}

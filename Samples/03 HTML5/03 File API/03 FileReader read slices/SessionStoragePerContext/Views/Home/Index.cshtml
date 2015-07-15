@@ -1,0 +1,112 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <style>
+        input[type=file] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>Select big file and watch progress</h1>
+
+    <input type="file" />
+
+    <div class="progress">0%</div>
+
+    <button class="browse">Browse</button>
+    <button class="abort">Abort</button>
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+            var count = 1;
+
+            var fileInput = $("input");
+            var progress = $(".progress");
+            var file = null;                // handle to file being read
+            var pos = 0;                    // read position
+            var bufSize = 1024 * 1024 * 10; // size of buffer for a single read operation
+            var fileReader = null;          // current fileReader
+            var abortRequested = false;     // true when user selects abort
+
+            fileInput.bind("change", fileSelectionChanged);
+            $(".browse").click(browse);
+            $(".abort").click(abort);
+
+            function browse() {
+                fileInput.trigger("click");
+            }
+
+            function abort() {
+                abortRequested = true;
+
+                if (fileReader != null) {
+                    fileReader.abort();
+                }
+            }
+
+            function fileSelectionChanged(e) {
+                console.log("File selection changed: " + e.target.files.length);
+
+                //
+                //  Only one file at a time
+                //
+                file = fileInput[0].files[0];
+
+                //
+                //  Reset variables from previous read operation
+                //  
+                fileReader = null;
+                pos = 0;
+                abortRequested = false;
+
+                readNextBuffer();
+            }
+
+            function readNextBuffer() {
+                if (abortRequested) {
+                    //
+                    //  User selected abort
+                    //
+                    return;
+                }
+
+                if (pos >= file.size) {
+                    //
+                    //  End of file
+                    //
+                    return;
+                }
+
+                //
+                //  Construct a file reader object and read the next slice
+                //
+                fileReader = new FileReader();
+                fileReader.readAsArrayBuffer(file.slice(pos, pos + bufSize));
+
+                fileReader.addEventListener("load", function (e) {
+                    //
+                    //  load is fired when read operation completed successfully
+                    //
+                    pos += e.target.result.byteLength;
+
+                    var percentCompleted = Math.round(pos / file.size * 10000) / 100;
+                    progress.text(percentCompleted + "%");
+
+                    readNextBuffer();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

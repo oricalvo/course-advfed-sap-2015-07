@@ -1,0 +1,44 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <script src="~/Scripts/jquery.js"></script>
+</head>
+<body>
+    <div>
+        <button>Push State</button>
+    </div>
+
+    <script>
+        $(window).bind("popstate", function (e) {
+            console.log("popstate: ");
+            var contact = e.originalEvent.state;
+            console.log(contact);
+            console.log("contact instanceof Contact: " + (contact instanceof Contact));
+        });
+
+        function Contact(name) {
+            this.name = name;
+        }
+
+        $(function () {
+            var counter = 1;
+
+            var contact = new Contact("Ori");
+            console.log("contact instanceof Contact: " + (contact instanceof Contact));
+
+            $("button").click(function () {
+                history.pushState(contact, null, "state" + counter);
+                ++counter;
+            });
+        });
+    </script>
+</body>
+</html>

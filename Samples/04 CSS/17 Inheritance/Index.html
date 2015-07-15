@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        .parent {
+            background-color: red;
+            color: white;
+            padding: 1em;
+            /* by default font-size is not inherited by button */
+            font-size: 2em;
+        }
+
+        .child {
+            background-color: blue;
+            padding: inherit;
+        }
+
+        /*button {
+            font-size: inherit;
+        }*/
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="child">Hello <button>Click me</button></div>
+    </div>
+</body>
+</html>

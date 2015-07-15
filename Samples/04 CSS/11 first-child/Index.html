@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        body {
+            font-size: 2em;
+            margin: 5em;
+            width: 20em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        button {
+            font-size: inherit;
+        }
+
+        /*
+            Button is not first child and therefore this rule is ignored
+        */
+        div button:first-child {
+            background-color: blue;
+            color: white;
+        }
+
+        /*div button:first-of-type {
+            background-color: blue;
+            color: white;
+        }*/
+    </style>
+</head>
+<body>
+    <div>
+        <p></p>
+        <button>Button</button>
+    </div>
+</body>
+</html>

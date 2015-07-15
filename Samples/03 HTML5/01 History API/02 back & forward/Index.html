@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Indexed DB</title>
+
+    <script src="jquery.js"></script>
+</head>
+<body>
+    <button class="back">Back</button>
+    <button class="forward">Forward</button>
+    <button class="change-hash">Change Hash</button>
+
+    <hr />
+    <span class="length"></span>
+
+    <script>
+        $(function () {
+            var count = 1;
+
+            $(".back").click(function () {
+                window.history.back(1);
+            });
+
+            $(".forward").click(function () {
+                window.history.forward(1);
+            });
+
+            $(".change-hash").click(function () {
+                window.location.hash = ("hash" + count);
+                ++count;
+            });
+
+            $(".length").text(window.history.length);
+        });
+    </script>
+</body>
+</html>

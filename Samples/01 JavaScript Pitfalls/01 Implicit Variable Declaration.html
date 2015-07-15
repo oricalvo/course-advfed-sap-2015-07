@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Implicit Variable Declaration</title>
+    </head>
+
+    <body>
+        <script>
+            function G() {
+                for (i = 0; i < 5; i++) {
+                    console.log("G " + (i + 1));
+
+                    F();
+                }
+            }
+
+            function F() {
+                for (i = 0; i < 5; i++) {
+                    console.log("    F " + (i + 1));
+                }
+            }
+
+            G();
+        </script>
+    </body>
+</html>

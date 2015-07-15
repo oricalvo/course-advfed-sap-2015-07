@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        <title>Video</title>
+        <script src="jquery.js"></script>
+    </head>
+<body>
+
+    <video width="320" height="240" >
+        <source src="http://www.w3schools.com/html/movie.mp4" type="video/mp4">
+        <source src="http://www.w3schools.com/html/movie.ogg" type="video/ogg">
+        Your browser does not support the video tag.
+    </video>
+
+    <div>
+        <button class="play">Play</button>
+        <button class="pause">Pause</button>
+        <button class="controls">Controls</button>
+    </div>
+
+    <script>
+        $(function () {
+            var video = $("video");
+
+            $(".play").click(function () {
+                video[0].play();
+            });
+
+            $(".pause").click(function () {
+                video[0].pause();
+            });
+
+            $(".controls").click(function () {
+                if (video.attr("controls")) {
+                    video.removeAttr("controls");
+                }
+                else {
+                    video.attr("controls", "");
+                }
+            });
+        });
+    </script>
+</body>
+</html>

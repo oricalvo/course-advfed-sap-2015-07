@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Null vs Undefined</title>
+    </head>
+
+    <body>
+        <script>
+            console.log("Look for non existant element: " + document.getElementById("blabla"));
+            console.log("Read a non existant field: " + window.blabla);
+
+            console.log("!null: " + (!null));
+            console.log("!undefined: " + (!undefined));
+            console.log("null == undefined: " + (null == undefined));
+            console.log("null === undefined: " + (null === undefined));
+        </script>
+    </body>
+</html>

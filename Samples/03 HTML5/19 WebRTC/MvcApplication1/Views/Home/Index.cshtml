@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<style>
+    .page
+    {
+        text-align: center;
+    }
+
+    video
+    {
+        display: inline-block;
+    }
+
+    img
+    {
+        display: inline-block;
+    }
+
+    textarea
+    {
+        width: 90%;
+        height: 10em;
+    }
+</style>
+
+<div class="page">
+    <h1>getUserMedia</h1>
+
+    <video autoplay width="640" height="480"></video>
+    <img src="">
+
+    <div>
+        <button>Take A Pic</button>
+    </div>
+
+    <div>
+        <textarea></textarea>
+    </div>
+
+    <canvas width="640" height="480" style="display:none;"></canvas>
+</div>
+
+@section scripts
+{
+    <script>
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+
+        $(function () {
+            if (!navigator.getUserMedia) {
+                alert("Current browser does not support getUserMedia");
+                return;
+            }
+
+            var video = $("video")[0];
+            var canvas = $("canvas")[0];
+            var img = $("img")[0];
+            var streamOn = false;
+            var textarea = $("textarea");
+
+            $("button").click(takePic);
+
+            navigator.getUserMedia({
+                    video: true,
+                    audio: false,
+                },
+                function (stream) {
+                    alert('getUserMedia callback');
+
+                    //
+                    //  Attach video element to the media stream
+                    //
+                    video.src = window.URL.createObjectURL(stream);
+
+                    //
+                    //  Hold a reference to the media stream so we can take a picture later
+                    //
+                    streamOn = true;
+                },
+                function (e) {
+                    alert('getUserMedia failed!', e);
+                });
+
+            alert("after");
+
+            function takePic() {
+                if (!streamOn) {
+                    return;
+                }
+
+                //
+                //  Draw into the invisible canvas
+                //
+                var ctx = canvas.getContext('2d');
+                ctx.drawImage(video, 0, 0);
+
+                //
+                //  Convert canas content to a url that can be referenced by the image
+                //
+                var url = canvas.toDataURL('image/webp');
+                img.src = url;
+
+                textarea.text(url);
+            }
+        });
+    </script>
+}
+

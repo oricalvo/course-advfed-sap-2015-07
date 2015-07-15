@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>09 Wrap Object Creation inside a Factory</title>
+    </head>
+
+    <body>
+        <script>
+            function createContact(id, name) {
+                var contact = {
+                    id: id,
+                    name: name,
+                    dump: function () {
+                        console.log(this.id + ", " + this.name);
+                    }
+                };
+
+                return contact;
+            }
+
+            var contact = createContact(123, "Ori");
+            contact.dump();
+        </script>
+    </body>
+</html>

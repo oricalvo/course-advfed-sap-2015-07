@@ -1,0 +1,25 @@
+﻿<html>
+    <head>
+        <script src="~/Scripts/jquery.js"></script>
+        <script src="~/Scripts/knockout.js"></script>
+        <script src="~/Scripts/Contact.js"></script>
+        <script src="~/Scripts/IndexView.js"></script>
+    </head>
+
+    <body>
+        <h2>Index</h2>
+
+        <ul data-bind="foreach: contacts" class="contacts">
+            <li>
+                <span class="name" data-bind="text: name">
+                </span>
+            </li>
+        </ul>
+
+        <div>
+            <input type="text" data-bind="value: name" />
+            <input type="button" value="Add" data-bind="click: add" />
+        </div>
+    </body>
+</html>
+

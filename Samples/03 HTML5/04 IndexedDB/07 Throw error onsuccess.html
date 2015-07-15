@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Indexed DB</title>
+
+    <script src="jquery.js"></script>
+    <script src="q.js"></script>
+    <script src="DAL.js"></script>
+</head>
+<body>
+    <button class="addAndThrow">Add And Throw Error</button>
+    <button class="readAll">Read All</button>
+    <button class="deleteAll">Delete All</button>
+
+    <script>
+        $(function () {
+            DAL.openDb();
+
+            $(".addAndThrow").click(DAL.addDataAndThrowOnSuccess);
+            $(".readAll").click(DAL.readAll);
+            $(".deleteAll").click(DAL.deleteAll);
+        });
+    </script>
+</body>
+</html>

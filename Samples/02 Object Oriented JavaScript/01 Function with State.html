@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Function with State</title>
+    </head>
+
+    <body>
+        <script>
+            function createFuncWithState(begin) {
+                var counter = begin;
+
+                var func = function () {
+                    console.log("Counter is: " + counter);
+
+                    ++counter;
+                };
+
+                return func;
+            }
+
+            var f1 = createFuncWithState(100);
+            f1();
+            f1();
+
+            var f2 = createFuncWithState(200);
+            f2();
+            f2();
+
+            console.log("f1 == f2: " + (f1 == f2));
+        </script>
+    </body>
+</html>

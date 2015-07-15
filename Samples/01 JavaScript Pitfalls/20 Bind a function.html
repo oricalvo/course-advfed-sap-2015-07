@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Bind a function</title>
+    </head>
+
+    <body>
+        <script>
+            function F(num1, num2) {
+                console.log("  this = " + this);
+                console.log("  num1 = " + num1);
+                console.log("  num2 = " + num2);
+            }
+
+            var newF = F.bind(10, 11, 12);
+            
+            console.log("newF();");
+            newF();
+
+            console.log("newF(3, 4);");
+            newF(3, 4);
+        </script>
+    </body>
+</html>

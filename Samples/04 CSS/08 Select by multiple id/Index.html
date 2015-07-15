@@ -1,0 +1,24 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <style>
+        .btn-large {
+            font-size: 2em;
+        }
+
+        .btn.btn-large {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+    <button id="button1" class="btn btn-large">Button 1</button>
+    <button id="button1" class="btn">Button 2</button>
+
+    <script>
+        console.log(document.getElementById("button1"));
+        console.log(document.querySelectorAll("#button1"));
+    </script>
+</body>
+</html>

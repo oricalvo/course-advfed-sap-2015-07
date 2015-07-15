@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Inheritance and prototype's constructor</title>
+
+        <script src="Common.js"></script>
+        <script src="Shape.js"></script>
+        <script src="Circle.js"></script>
+    </head>
+
+    <body>
+        <script>
+            var c = new PaintApp.Circle(5, 5, 10);
+
+            console.log("c instanceof Shape: " + (c instanceof PaintApp.Shape));
+            console.log("c instanceof Circle: " + (c instanceof PaintApp.Circle));
+            console.log("c.constructor: " + c.constructor.name);
+        </script>
+    </body>
+</html>

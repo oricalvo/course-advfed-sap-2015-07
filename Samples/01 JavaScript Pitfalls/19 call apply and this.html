@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>19 call apply and this</title>
+    </head>
+
+    <body>
+        <script>
+            function F(num1, num2) {
+                console.log("  this = " + this);
+                console.log("  num1 = " + num1);
+                console.log("  num2 = " + num2);
+            }
+
+            console.log("Calling F with no context");
+            F(11, 12);
+
+            console.log("Calling F with context: F.call(10, 11, 12)");
+            F.call(10, 11, 12);
+
+            console.log("Calling F with context: F.apply(10, [11, 12])");
+            F.apply(10, [11, 12]);
+        </script>
+    </body>
+</html>

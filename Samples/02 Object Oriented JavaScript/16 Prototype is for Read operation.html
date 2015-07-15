@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Prototype is for Read operation</title>
+    </head>
+
+    <body>
+        <script>
+            function Contact(id, name) {
+                console.log("ctor: this.id = " + this.id);
+
+                this.id = id;
+                this.name = name;
+            }
+
+            Contact.prototype.dump = function () {
+                console.log("dump: this.id = " + this.id);
+            }
+
+            Contact.prototype.id = 123;
+
+            var c1 = new Contact(1, "Ori");
+            c1.dump();
+
+            var c2 = new Contact(2, "Roni");
+            c2.dump();
+        </script>
+    </body>
+</html>

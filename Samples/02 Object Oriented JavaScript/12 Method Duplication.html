@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Method Duplication</title>
+    </head>
+
+    <body>
+        <script>
+            function createContact(id, name) {
+                var _id = id;
+                var _name = name;
+
+                var contact = {
+                    dump: function () {
+                        console.log(_id + ", " + _name);
+                    }
+                };
+
+                return contact;
+            }
+
+            var c1 = createContact(1, "Ori");
+            var c2 = createContact(2, "Roni");
+
+            console.log("(c1.dump == c2.dump): ", (c1.dump == c2.dump));
+        </script>
+    </body>
+</html>

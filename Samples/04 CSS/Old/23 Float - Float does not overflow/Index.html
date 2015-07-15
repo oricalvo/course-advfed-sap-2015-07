@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        html {
+            font-size: 2em;
+            margin: 5em;
+        }
+
+        .parent {
+            display: inline-block;
+            background-color: red;
+            width: 5em;
+            white-space: nowrap;
+        }
+
+        .wrapper {
+            display: inline-block;
+            white-space: nowrap;
+            background-color: green;
+        }
+
+        .floated {
+            /*background-color: blue;*/
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="wrapper">
+            <span class="floated">floated</span>Text text text text text text text text
+        </div>
+    </div>
+</body>
+</html>

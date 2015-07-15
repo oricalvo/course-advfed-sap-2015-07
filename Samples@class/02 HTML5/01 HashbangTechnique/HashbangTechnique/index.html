@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+</head>
+<body>
+    <button id="button1">Click me</button>
+
+    <script>
+        document.getElementById("button1").addEventListener("click", function () {
+
+            window.location.hash = "blabla";
+
+            window.location.assign("/about");
+
+            window.history.pushState({}, null, "/about");
+
+        });
+    </script>
+</body>
+</html>

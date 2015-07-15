@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <style>
+        html {
+            font-size: 2em;
+        }
+
+        body {
+            margin: 1rem;
+        }
+
+        .parent {
+            width: 10em;
+            display: inline-block;
+            background-color: red;
+            /*white-space:nowrap;*/
+            padding: 0.25em;
+            /*overflow: auto;*/
+        }
+
+        .child {
+            width: 3em;
+            height: 2em;
+            display: inline-block;
+            background-color: blue;
+            vertical-align: middle;
+            margin-bottom: 0.25em;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <span class="child"></span>
+        <span class="child"></span>
+        <span class="child"></span>
+        <span class="child"></span>
+        <span class="child"></span>
+    </div>
+</body>
+</html>

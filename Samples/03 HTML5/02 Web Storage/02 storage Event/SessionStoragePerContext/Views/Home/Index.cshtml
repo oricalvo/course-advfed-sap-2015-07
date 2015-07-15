@@ -1,0 +1,40 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <button class="write">Write</button>
+    <button class="read">Read</button>
+
+    <script src="~/Scripts/jquery-2.1.1.js"></script>
+
+    <script>
+        $(function () {
+            var count = 1;
+
+window.addEventListener("storage", function (e) {
+    console.log(e);
+}, false);
+
+            $(".write").click(function () {
+                var data = count++;
+                localStorage.setItem("data", data);
+                console.log("Written: " + data);
+            });
+
+            $(".read").click(function () {
+                var data = localStorage.getItem("data");
+                console.log("Read: " + data);
+            });
+        });
+    </script>
+</body>
+</html>

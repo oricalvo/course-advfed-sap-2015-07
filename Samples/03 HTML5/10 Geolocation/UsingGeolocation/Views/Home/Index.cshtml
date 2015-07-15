@@ -1,0 +1,55 @@
+﻿<button>Get Location</button>
+
+<div>
+    Latitude: <span class="latitude"></span>
+</div>
+
+<div>
+    Longitude: <span class="longitude"></span>
+</div>
+
+<div>
+    Accuracy: <span class="accuracy"></span>
+</div>
+
+<div id="mapholder"></div>
+
+@section scripts
+{
+<script>
+    $(function () {
+        $("button").click(function () {
+            navigator.geolocation.getCurrentPosition(function (position) {
+                console.log(position);
+
+                $(".latitude").text(position.coords.latitude);
+                $(".longitude").text(position.coords.longitude);
+                $(".accuracy").text(position.coords.accuracy);
+
+                var latlon = position.coords.latitude + "," + position.coords.longitude;
+                var img_url = "http://maps.googleapis.com/maps/api/staticmap?center=" + latlon + "&zoom=14&size=400x300&sensor=false";
+
+                $("#mapholder").html("<img src='" + img_url + "'>");
+            },
+            function (error) {
+                console.log(error);
+            },
+            {
+                enableHighAccuracy: true
+            });
+        });
+    });
+</script>
+}
+
+<style>
+    div
+    {
+        font-size: 1.5em;
+    }
+
+        div span
+        {
+            font-weight: bold;
+        }
+</style>

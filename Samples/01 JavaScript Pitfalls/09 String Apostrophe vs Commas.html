@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>String</title>
+    </head>
+
+    <body>
+        <script>
+            var str = '<div class="default"/>';
+            console.log(str);
+
+            str = "<div class='default'/>";
+            console.log(str);
+
+            var obj = {
+                id: '123'
+            };
+            console.log("obj.id = " + obj.id);
+
+            obj = {
+                id: "123"
+            };
+            console.log("obj.id = " + obj.id);
+
+            var jsonStr = '{"id": 1, "name": "Ori"}';
+            console.log("JSON.parse('" + jsonStr + "')");
+            try {
+                JSON.parse(jsonStr)
+                console.log("    OK");
+            }
+            catch (e) {
+                console.log("    ERROR");
+            }
+
+            jsonStr = "{'id': 1, 'name': 'Ori'}";
+            console.log("JSON.parse(\"" + jsonStr + "\")");
+            try {
+                JSON.parse(jsonStr)
+                console.log("    OK");
+            }
+            catch (e) {
+                console.log("    ERROR");
+            }
+        </script>
+    </body>
+</html>

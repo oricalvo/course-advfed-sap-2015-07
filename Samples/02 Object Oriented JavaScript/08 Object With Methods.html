@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Define an Object With Methods</title>
+    </head>
+
+    <body>
+        <script>
+            var contact = {
+                id: 123,
+                name: "Ori",
+                dump: function () {
+                    console.log(this.id + ", " + this.name);
+                }
+            };
+
+            contact.dump();
+        </script>
+    </body>
+</html>

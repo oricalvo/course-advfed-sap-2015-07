@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Understanding this</title>
+    </head>
+
+    <body>
+        <button id="button1" name="Button1">Click me</button>
+
+        <script>
+            function dump() {
+                console.log(this.name);
+            }
+
+            window.name = "Window";
+            dump();
+
+            var obj = {
+                name: "Custom Object",
+                dump: dump
+            };
+            obj.dump();
+
+            var button1 = document.getElementById("button1");
+            button1.name = "Button";
+            button1.addEventListener("click", dump);
+        </script>
+    </body>
+</html>

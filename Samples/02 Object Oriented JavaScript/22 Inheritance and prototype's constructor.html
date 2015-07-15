@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Inheritance and prototype's constructor</title>
+    </head>
+
+    <body>
+        <script>
+            function inherit(derived, base) {
+                function F() {
+                }
+
+                F.prototype = base.prototype;
+
+                derived.prototype = new F();
+                derived.prototype.constructor = derived;
+            }
+
+            function Shape(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            Shape.prototype.move = function (dx, dy) {
+                this.x += dx;
+                this.y += dy;
+            }
+
+            Shape.prototype.dump = function () {
+                console.log(this.x + ", " + this.y);
+            }
+
+            function Circle(x, y, radius) {
+                Shape.call(this, x, y);
+
+                this.radius = radius;
+            }
+
+            inherit(Circle, Shape);
+
+            Circle.prototype.dump = function () {
+                console.log(this.x + ", " + this.y + ", " + this.radius);
+            }
+
+            var c = new Circle(5, 5, 10);
+
+            console.log("c instanceof Shape: " + (c instanceof Shape));
+            console.log("c instanceof Circle: " + (c instanceof Circle));
+            console.log("c.constructor: " + c.constructor.name);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>prototype's constructor</title>
+    </head>
+
+    <body>
+        <script>
+            function Shape(x, y) {
+                this.x = x;
+                this.y = y;
+            }
+
+            console.log(Shape.prototype.constructor.name);
+
+            var s = new Shape(5, 5);
+            console.log(s.constructor.name);
+        </script>
+    </body>
+</html>
