@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyApp">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="HomeCtrl">
+        <button ng-click="run($event)">Run</button>
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module("MyApp", []).controller("HomeCtrl", function ($scope) {
+            $scope.run = function ($event) {
+                debugger;
+
+                //
+                //  Run below code from the console
+                //
+                //inspect($event.target);
+            }
+        });
+    </script>
+</body>
+</html>

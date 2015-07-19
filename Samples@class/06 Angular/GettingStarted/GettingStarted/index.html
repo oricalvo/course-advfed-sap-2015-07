@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyApp">
+<head>
+    <title></title>
+
+    <style>
+        [ng-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="HomeCtrl as ctrl">
+        <h1 ng-cloak>{{ctrl.message}}</h1>
+
+        <label>
+            Show admin
+            <input type="checkbox" ng-model="ctrl.showAdmin" />
+        </label>
+
+        <div class="admin-section" ng-show="ctrl.showAdmin" ng-cloak>
+            <h1>Admin Section</h1>
+        </div>
+
+        <ul>
+            <li ng-repeat="contact in ctrl.contacts">
+                <span ng-cloak>{{contact.name}}</span>
+                <button ng-click="ctrl.remove(contact, $index)">Delete</button>
+            </li>
+        </ul>
+
+        <clock></clock>
+    </div>
+
+    <script src="angular.js"></script>
+    <script src="app.js"></script>
+    <script src="ContactService.js"></script>
+    <script src="ConfirmBox.js"></script>
+    <script src="ClockComponent.js"></script>
+    <script src="HomeCtrl.js"></script>
+</body>
+</html>
+

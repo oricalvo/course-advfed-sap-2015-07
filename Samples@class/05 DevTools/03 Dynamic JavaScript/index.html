@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="MyApp">
+<head>
+    <title></title>
+</head>
+<body>
+    <div ng-controller="HomeCtrl">
+        <button ng-click="run()">Run</button>
+    </div>
+
+    <script src="angular.js"></script>
+    <script>
+        angular.module("MyApp", []).controller("HomeCtrl", function ($scope) {
+
+            $scope.run = function () {
+                var f;
+                
+                eval("f = function f(){\n    console.log('XXX');\n};");
+                //eval("f = function f(){\n    console.log('XXX');\n};\n\n//# sourceURL=dynJS.js");
+
+                f();
+            }
+
+        });
+    </script>
+</body>
+</html>

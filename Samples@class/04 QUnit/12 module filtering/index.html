@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+    <script src="../bower_components/syn/dist/syn.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <script>
+    </script>
+
+    <script>
+QUnit.module("DAL");
+
+QUnit.test("Able to retrieve all contacts", function (assert) {
+    assert.expect(0);
+});
+
+QUnit.test("Retrieving a contact after delete throws an error", function (assert) {
+    assert.expect(0);
+});
+
+QUnit.module("UI");
+
+QUnit.test("Cannot add a new contact with empty name", function (assert) {
+    assert.expect(0);
+});
+    </script>
+</body>
+</html>

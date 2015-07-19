@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+
+    <script>
+function MyError(message) {
+    this.message = message;
+}
+
+function g() {
+    throw new MyError("Error");
+}
+
+QUnit.test("Verifies a function throws an exception", function (assert) {
+    assert.throws(g, "Verify that g throws any exception");
+    assert.throws(g, "Error: Error", "Verify that g throws any exception with correct name & message fields");
+    assert.throws(g, new MyError("Error"), "Verify that g throws an exception");
+    assert.throws(g, function (err) {
+        return true;
+    }, "Verify that g throws an exception + custom verification of the error object");
+});
+
+    </script>
+</body>
+</html>

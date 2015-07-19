@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../sinon.js"></script>
+
+    <script>
+        function Timer(interval) {
+            this.listeners = [];
+            this.interval = interval;
+        }
+
+        Timer.prototype.start = function () {
+            var me = this;
+
+            setInterval(function () {
+                var err = null;
+
+                me.listeners.forEach(function (listener) {
+                    try {
+                        listener(me);
+                    } catch (_err) {
+                        err = err || _err;
+                    }
+                });
+
+                if (err) {
+                    throw err;
+                }
+            }, this.interval);
+        }
+
+        Timer.prototype.register = function (callback) {
+            this.listeners.push(callback);
+        }
+    </script>
+
+    <script>
+QUnit.test("One listener exception does not prevent other listeners to be notified", function (assert) {
+    var clock = sinon.useFakeTimers();
+
+    try {
+        var timer = new Timer(500);
+
+        var throwingStub = sinon.stub().throws();
+        timer.register(throwingStub);
+
+        var spy = sinon.spy();
+        timer.register(spy);
+
+        timer.start();
+
+        assert.throws(function () {
+            clock.tick(500);
+        });
+
+        assert.equal(spy.callCount, 1);
+    }
+    finally {
+        clock.restore();
+    }
+});
+    </script>
+</body>
+</html>

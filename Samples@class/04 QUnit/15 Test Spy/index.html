@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+    <script src="../sinon.js"></script>
+
+    <script>
+        function Timer(interval) {
+            this.listeners = [];
+            this.interval = interval;
+        }
+
+        Timer.prototype.start = function () {
+            var me = this;
+
+            setInterval(function () {
+                me.listeners.forEach(function (listener) {
+                    listener(me);
+                });
+            }, this.interval);
+        }
+
+        Timer.prototype.register = function (callback) {
+            this.listeners.push(callback);
+        }
+    </script>
+
+    <script>
+QUnit.test("Use test spy", function (assert) {
+    var clock = sinon.useFakeTimers();
+
+    try {
+        var timer = new Timer(500);
+        timer.start();
+
+        var spy = sinon.spy();
+        timer.register(spy);
+
+        clock.tick(1000);
+
+        assert.equal(spy.callCount, 2, "Callback should be called twice");
+    }
+    finally {
+        clock.restore();
+    }
+});
+    </script>
+</body>
+</html>

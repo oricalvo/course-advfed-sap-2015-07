@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <input id="input1" />
+
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+    <script src="../bower_components/syn/dist/syn.js"></script>
+    <script src="../bower_components/jquery/dist/jquery.js"></script>
+
+    <script>
+        $.fn.number = function () {
+            var allowed = getAllowed();
+
+            this.on("keydown", function (e) {
+
+                if (!allowed[e.which]) {
+                    e.preventDefault();
+                }
+            });
+
+            function getAllowed() {
+                var allowed = [];
+                for (var i = '0'.charCodeAt(0) ; i <= '9'.charCodeAt(0) ; i++) {
+                    allowed[i] = true;
+                }
+                allowed[8] = true;
+
+                return allowed;
+            }
+        }
+    </script>
+
+    <script>
+        QUnit.test("Verify number plugin accepts only digits", function (assert) {
+            var input = $("input");
+
+            input.number();
+
+            syn.key(input[0], '1');
+            syn.key(input[0], 'a');
+
+            //input.trigger($.Event("keydown", { which: '1'.charCodeAt(0) }));
+            //input.trigger($.Event("keydown", { which: 'a'.charCodeAt(0) }));
+
+            assert.equal(input.val(), "1");
+        });
+
+    </script>
+</body>
+</html>

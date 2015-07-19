@@ -1,0 +1,40 @@
+{
+  "name": "syn",
+  "version": "0.1.2",
+  "author": {
+    "name": "Bitovi",
+    "email": "contact@bitovi.com",
+    "web": "http://bitovi.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bitovi/syn.git",
+    "github": "https://github.com/bitovi/syn"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://opensource.org/licenses/mit-license.php"
+    }
+  ],
+  "dependencies": {},
+  "ignore": [
+    "stealconfig.js",
+    "/test",
+    "/drag",
+    "/demo",
+    "/*.js",
+    "/*.html"
+  ],
+  "homepage": "https://github.com/bitovi/syn",
+  "_release": "0.1.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.2",
+    "commit": "926d31e151655243d7b263380c7908dccf5e0ad4"
+  },
+  "_source": "git://github.com/bitovi/syn.git",
+  "_target": "~0.1.2",
+  "_originalSource": "syn",
+  "_direct": true
+}

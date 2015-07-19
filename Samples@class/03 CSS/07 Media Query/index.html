@@ -1,0 +1,38 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <style>
+        .side-bar {
+            width: 33%;
+            background-color: blue;
+            height: 10em;
+            float: left;
+        }
+
+        .content {
+            width: 67%;
+            background-color: red;
+            height: 10em;
+            float: left;
+        }
+
+        @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+            .side-bar, .content {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="side-bar">
+        Side Bar
+    </div>
+
+    <div class="content">
+        Content
+    </div>
+</body>
+</html>

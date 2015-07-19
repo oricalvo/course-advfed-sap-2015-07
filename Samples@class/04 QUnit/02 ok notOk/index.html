@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>QUnit basic example</title>
+
+    <link rel="stylesheet" href="../bower_components/qunit/qunit/qunit.css">
+</head>
+<body>
+    <div id="qunit"></div>
+    <div id="qunit-fixture"></div>
+    <script src="../bower_components/qunit/qunit/qunit.js"></script>
+
+    <script>
+
+        console.log(!!"");
+
+        QUnit.test("ok assertion with true", function (assert) {
+            assert.ok(true, "true");
+        });
+
+        QUnit.test("ok assertion with empty object", function (assert) {
+            assert.ok({}, "true");
+        });
+
+        QUnit.test("ok assertion with undefined", function (assert) {
+            assert.ok(undefined, "true");
+        });
+
+    </script>
+</body>
+</html>
+
